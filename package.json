@@ -1,0 +1,15 @@
+{
+    "name": "pd-solucoes",
+    "version": "1.0.0",
+    "description": "Teste para a vaga de desenvolvedor na PDSoluções.",
+    "scripts": {
+      "build:back": "docker-compose build backend-app",
+      "build:front": "docker-compose build frontend-app",
+      "start:db": "docker-compose up mysql-db",
+      "start:back": "docker-compose up backend-app --renew-anon-volumes",
+      "start:front": "docker-compose up frontend-app --renew-anon-volumes",
+      "clean": "docker-compose down -v"
+    },
+    "author": "",
+    "license": "ISC"
+  }

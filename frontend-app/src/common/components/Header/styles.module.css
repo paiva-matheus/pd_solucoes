@@ -1,0 +1,42 @@
+.header {
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+.logoContainer {
+  padding: 1rem 0;
+}
+
+.titleContainer {
+  padding: 2.875rem 0 2.563rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 3.125rem;
+  font-weight: 500;
+  color: var(--black);
+  margin-right: auto;
+}
+
+.link {
+  font-size: 1rem;
+  color: var(--black);
+  padding-bottom: 0.815rem;
+}
+
+.linkActive {
+  border-bottom: 0.313rem solid var(--blue);
+}
+
+.linkList {
+  display: flex;
+  column-gap: 2rem;
+  padding-bottom: 0.815rem;
+}

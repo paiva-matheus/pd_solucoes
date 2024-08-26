@@ -7,5 +7,6 @@ import { SquadController } from './squad.controller';
   imports: [SquadModule],
   providers: [SquadService],
   controllers: [SquadController],
+  exports: [SquadService],
 })
 export class SquadHttpModule {}

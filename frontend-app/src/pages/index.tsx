@@ -1,16 +1,16 @@
-import Head from "next/head";
+import Head from 'next/head';
 
 export default function Home() {
   return (
     <>
       <Head>
         <title>PD Soluções</title>
-        <meta name="description" content="PD Soluções APP" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.png" />
+        <meta name='description' content='PD Soluções APP' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='icon' href='/favicon.png' />
       </Head>
       <main>
-       
+        <p></p>
       </main>
     </>
   );

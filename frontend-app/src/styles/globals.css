@@ -1,9 +1,14 @@
 :root {
-    --text-color: #2d2d2d;
-    --text-color-secondary: #FFFFFF;
-    --max-width: 1100px;
-  }
-
+  --max-width: 1100px;
+  --blue: #4263eb;
+  --purple: #7048e8;
+  --pink: #51cf66;
+  --black: #212429;
+  --gray-400: #495057;
+  --gray-300: #acb5bd;
+  --gray-200: #dde2e5;
+  --gray-100: #f8f9fa;
+}
 
 * {
   margin: 0;
@@ -14,7 +19,28 @@
   box-sizing: border-box;
 }
 
-html, body, div, p, header, footer, main, section, nav, ul, li, a, button, input, img, article, h1, h2, h3, h4, h5, h6 {
+html,
+body,
+div,
+p,
+header,
+footer,
+main,
+section,
+nav,
+ul,
+li,
+a,
+button,
+input,
+img,
+article,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -22,8 +48,6 @@ html, body, div, p, header, footer, main, section, nav, ul, li, a, button, input
   text-decoration: none;
   border: none;
 }
-
-
 
 body {
   background: #fff;
@@ -39,6 +63,6 @@ p {
   line-height: 1.4;
 }
 
-button{
- cursor: pointer;
+button {
+  cursor: pointer;
 }

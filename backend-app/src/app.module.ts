@@ -4,7 +4,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Squad } from './squad/squad.entity';
-import { SquadHttpModule } from './squad/squad-http.module';
+import { Employee } from './employee/employee.entity';
+import { EmployeeModule } from './employee/employee.module';
+import { SquadModule } from './squad/squad.module';
 
 @Module({
   imports: [
@@ -20,11 +22,12 @@ import { SquadHttpModule } from './squad/squad-http.module';
         username: configService.get('DB_USER'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_DATABASE'),
-        entities: [Squad],
+        entities: [Squad, Employee],
         synchronize: false,
       }),
     }),
-    SquadHttpModule,
+    SquadModule,
+    EmployeeModule,
   ],
   controllers: [AppController],
   providers: [AppService],

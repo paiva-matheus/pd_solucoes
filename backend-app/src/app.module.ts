@@ -3,6 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { Squad } from './squad/squad.entity';
+import { SquadHttpModule } from './squad/squad-http.module';
 
 @Module({
   imports: [
@@ -18,10 +20,11 @@ import { AppService } from './app.service';
         username: configService.get('DB_USER'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_DATABASE'),
-        entities: [],
+        entities: [Squad],
         synchronize: false,
       }),
     }),
+    SquadHttpModule,
   ],
   controllers: [AppController],
   providers: [AppService],

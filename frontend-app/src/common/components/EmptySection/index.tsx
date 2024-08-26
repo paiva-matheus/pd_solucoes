@@ -8,8 +8,11 @@ type EmptySectionProps = {
   onClick: () => void;
 };
 
-export const EmptySection = ({ message, onClick, buttonText }: EmptySectionProps) => {
-
+export const EmptySection = ({
+  message,
+  onClick,
+  buttonText,
+}: EmptySectionProps) => {
   return (
     <section className={styles.section}>
       <div className={styles.content}>

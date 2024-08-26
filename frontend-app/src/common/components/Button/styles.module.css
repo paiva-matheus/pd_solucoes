@@ -1,0 +1,9 @@
+.container {
+  background: var(--blue);
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.875rem 1.875rem;
+  border-radius: 0.5rem;
+  width: 11.375rem;
+}

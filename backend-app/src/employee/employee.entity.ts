@@ -1,5 +1,12 @@
 import { Squad } from '../squad/squad.entity';
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Report } from '../report/report.entity';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
 
 @Entity()
 export class Employee {
@@ -17,4 +24,7 @@ export class Employee {
 
   @ManyToOne(() => Squad, (squad) => squad.employees)
   squad: Squad;
+
+  @OneToMany(() => Report, (report) => report.employee)
+  reports: Report[];
 }

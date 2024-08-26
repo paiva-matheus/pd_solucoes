@@ -7,7 +7,7 @@ import { SquadModule } from 'src/squad/squad.module';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Employee]), SquadModule],
-  exports: [TypeOrmModule],
+  exports: [TypeOrmModule, EmployeeService],
   providers: [EmployeeService],
   controllers: [EmployeeController],
 })

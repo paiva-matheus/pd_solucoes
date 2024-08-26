@@ -7,6 +7,8 @@ import { Squad } from './squad/squad.entity';
 import { Employee } from './employee/employee.entity';
 import { EmployeeModule } from './employee/employee.module';
 import { SquadModule } from './squad/squad.module';
+import { ReportModule } from './report/report.module';
+import { Report } from './report/report.entity';
 
 @Module({
   imports: [
@@ -22,12 +24,13 @@ import { SquadModule } from './squad/squad.module';
         username: configService.get('DB_USER'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_DATABASE'),
-        entities: [Squad, Employee],
+        entities: [Squad, Employee, Report],
         synchronize: false,
       }),
     }),
     SquadModule,
     EmployeeModule,
+    ReportModule,
   ],
   controllers: [AppController],
   providers: [AppService],

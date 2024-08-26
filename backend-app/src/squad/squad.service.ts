@@ -51,4 +51,21 @@ export class SquadService {
 
     return squad;
   }
+
+  async getSquadWithEmployeesSpentHours(
+    squadId: number,
+    initialDate: Date,
+    endDate: Date,
+  ) {
+    return await this.squadsRepository
+      .createQueryBuilder('squad')
+      .innerJoinAndSelect('squad.employees', 'employee')
+      .innerJoinAndSelect('employee.reports', 'report')
+      .where('squad.id = :squadId', { squadId })
+      .andWhere('report.createdAt BETWEEN :initialDate AND :endDate', {
+        initialDate,
+        endDate,
+      })
+      .getOne();
+  }
 }

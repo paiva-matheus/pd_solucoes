@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnprocessableEntityException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Squad } from './squad.entity';
@@ -16,6 +20,18 @@ export class SquadService {
   }
 
   async create(squadData: CreateSquadDto): Promise<Squad> {
+    const squad = await this.squadsRepository.findOne({
+      where: {
+        name: squadData.name,
+      },
+    });
+
+    if (squad) {
+      throw new UnprocessableEntityException(
+        'There is already a squad with this name',
+      );
+    }
+
     const data = this.squadsRepository.create({
       name: squadData.name,
     });

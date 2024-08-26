@@ -1,5 +1,5 @@
 export type RemoteSquad = {
-  id: number
+  id: number;
   name: string;
 };
 

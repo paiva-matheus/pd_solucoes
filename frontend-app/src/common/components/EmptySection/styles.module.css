@@ -1,0 +1,24 @@
+.section {
+  background: var(--white);
+  width: 30.625rem;
+  height: 25.688rem;
+  margin: 7.5rem auto 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.paragraph {
+  font-size: 1rem;
+  color: var(--gray-300);
+  text-align: center;
+  margin-bottom: 2rem;
+}

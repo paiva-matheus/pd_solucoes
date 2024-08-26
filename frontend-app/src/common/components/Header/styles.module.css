@@ -1,5 +1,6 @@
 .header {
   border-bottom: 1px solid var(--gray-200);
+  background: var(--white);
 }
 
 .content {
@@ -27,12 +28,13 @@
 
 .link {
   font-size: 1rem;
-  color: var(--black);
+  color: var(--gray-300);
   padding-bottom: 0.815rem;
 }
 
 .linkActive {
   border-bottom: 0.313rem solid var(--blue);
+  color: var(--black);
 }
 
 .linkList {

@@ -51,7 +51,7 @@ h6 {
 }
 
 body {
-  background: #fff;
+  background: var(--gray-100);
 }
 
 html {

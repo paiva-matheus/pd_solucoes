@@ -10,6 +10,8 @@ import {
 import { SquadService } from './squad.service';
 import { Squad } from './squad.entity';
 import { CreateSquadDto } from './dto/create-squad.dto';
+import { ReturnAverageHoursSpentPerDayDto } from './dto/return-average-hours-spent-per-day';
+import { DateQueryDto } from './dto/date-query.dto';
 
 @Controller('squads')
 export class SquadController {
@@ -28,19 +30,48 @@ export class SquadController {
   @Get('/:squadId/employees-spent-hours')
   getSpentHours(
     @Param('squadId') squadId: number,
-    @Query('initialDate') initialDate: Date,
-    @Query('endDate') endDate: Date,
+    @Query() query: DateQueryDto,
   ) {
-    if (!squadId || !initialDate || !endDate) {
-      throw new BadRequestException(
-        'The "squadId", "initialDate" and "endDate" parameters are required.',
-      );
-    }
+    const { initialDate, endDate } = query;
 
     return this.squadService.getSquadWithEmployeesSpentHours(
       squadId,
-      initialDate,
-      endDate,
+      new Date(initialDate),
+      new Date(endDate),
+    );
+  }
+
+  @Get('/:squadId/total-hours-performed')
+  getTotalHoursPerformed(
+    @Param('squadId') squadId: number,
+    @Query() query: DateQueryDto,
+  ) {
+    const { initialDate, endDate } = query;
+
+    return this.squadService.getSquadTotalHoursPerformed(
+      squadId,
+      new Date(initialDate),
+      new Date(endDate),
+    );
+  }
+
+  @Get('/:squadId/average-hours-spent-per-day')
+  getAverageHoursSpentPerDay(
+    @Param('squadId') squadId: number,
+    @Query() query: DateQueryDto,
+  ): Promise<ReturnAverageHoursSpentPerDayDto> {
+    const { initialDate, endDate } = query;
+
+    if (initialDate === endDate) {
+      throw new BadRequestException(
+        'The initialDate and endDate fields must be different.',
+      );
+    }
+
+    return this.squadService.getSquadAverageHoursSpentPerDay(
+      squadId,
+      new Date(initialDate),
+      new Date(endDate),
     );
   }
 }

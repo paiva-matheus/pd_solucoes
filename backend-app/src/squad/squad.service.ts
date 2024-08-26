@@ -7,6 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Squad } from './squad.entity';
 import { CreateSquadDto } from './dto/create-squad.dto';
+import { getDaysBetweenDates } from 'src/utils/dates';
 
 @Injectable()
 export class SquadService {
@@ -67,5 +68,47 @@ export class SquadService {
         endDate,
       })
       .getOne();
+  }
+
+  async getSquadTotalHoursPerformed(
+    squadId: number,
+    initialDate: Date,
+    endDate: Date,
+  ) {
+    const query = await this.squadsRepository
+      .createQueryBuilder('squad')
+      .innerJoinAndSelect('squad.employees', 'employee')
+      .innerJoinAndSelect('employee.reports', 'report')
+      .select('SUM(report.spentHours)', 'totalHoursPerformed')
+      .where('squad.id = :squadId', { squadId })
+      .andWhere('report.createdAt BETWEEN :initialDate AND :endDate', {
+        initialDate,
+        endDate,
+      })
+      .getRawOne();
+
+    return query;
+  }
+
+  async getSquadAverageHoursSpentPerDay(
+    squadId: number,
+    initialDate: Date,
+    endDate: Date,
+  ) {
+    const days = getDaysBetweenDates(initialDate, endDate);
+
+    const query = await this.squadsRepository
+      .createQueryBuilder('squad')
+      .innerJoinAndSelect('squad.employees', 'employee')
+      .innerJoinAndSelect('employee.reports', 'report')
+      .select('SUM(report.spentHours)', 'totalHoursPerformed')
+      .where('squad.id = :squadId', { squadId })
+      .andWhere('report.createdAt BETWEEN :initialDate AND :endDate', {
+        initialDate,
+        endDate,
+      })
+      .getRawOne();
+
+    return { averageHoursSpentPerDay: query.totalHoursPerformed / days };
   }
 }

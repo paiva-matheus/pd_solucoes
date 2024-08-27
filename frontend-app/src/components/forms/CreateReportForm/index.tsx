@@ -11,10 +11,11 @@ const schema = z.object({
   spentHours: z
     .number({
       required_error: 'Campo obrigatório.',
+      message: 'Deve ser um número inteiro de 1 a 12',
     })
     .int()
-    .min(1)
-    .max(12),
+    .min(1, { message: 'O número deve ser maior ou igual a 1' })
+    .max(12, { message: 'O número deve ser menor ou igual a 12' }),
   employeeId: z.number({ required_error: 'Campo obrigatório.' }).int(),
 });
 

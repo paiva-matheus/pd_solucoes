@@ -23,8 +23,8 @@ export const useCreatEmployee = () => {
       queryClient.invalidateQueries({ queryKey: ['employees'] });
     },
     onError: () => {
-      toast.error('Erro ao criar a usuário. Tente novamente.')
-    }
+      toast.error('Erro ao criar a usuário. Tente novamente.');
+    },
   });
 
   const submitNewEmployee = async (

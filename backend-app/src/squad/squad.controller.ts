@@ -27,6 +27,11 @@ export class SquadController {
     return this.squadService.create(squadData);
   }
 
+  @Get('/:squadId')
+  findById(@Param('squadId') squadId: number): Promise<Squad> {
+    return this.squadService.findById(squadId);
+  }
+
   @Get('/:squadId/employees-spent-hours')
   getSpentHours(
     @Param('squadId') squadId: number,

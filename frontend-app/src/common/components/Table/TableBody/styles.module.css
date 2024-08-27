@@ -4,6 +4,10 @@
   text-align: center;
 }
 
+.row + .row {
+  border-top: 1px solid #00000005;
+}
+
 .cell {
   font-size: 1rem;
   color: #000;

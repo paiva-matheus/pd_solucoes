@@ -13,7 +13,7 @@ import { useFetchSquads } from '@/squad/hooks/useFetchSquads';
 import { useRouter } from 'next/router';
 
 export default function EmployeesPage() {
-  const router = useRouter()
+  const router = useRouter();
   const { employees, isLoadingEmployees } = useFetchEmployess();
   const { squads, isLoadingSquads } = useFetchSquads();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,10 +27,10 @@ export default function EmployeesPage() {
     { key: 'squadId', title: 'Squad ID' },
   ];
 
-  if(!isLoadingSquads && squads.length === 0){
-    router.push('/')
+  if (!isLoadingSquads && squads.length === 0) {
+    router.push('/');
   }
-  
+
   return (
     <>
       <Head>
@@ -40,37 +40,34 @@ export default function EmployeesPage() {
         <link rel='icon' href='/favicon.png' />
       </Head>
       <>
-      <Section title='Lista de Usuários'>
-        {isLoadingEmployees ? (
-          <div className={styles.skeletonContainer}>
-            <Skeleton width='100%' height='100px' borderRadius='4px' />
-            <Skeleton width='100%' height='100px' borderRadius='4px' />
-            <Skeleton width='100%' height='100px' borderRadius='4px' />
-            <Skeleton width='100%' height='100px' borderRadius='4px' />
-          </div>
-        ) : employees.length > 0 ? (
-          <>
-            <Table>
-              <Table.Header columns={columns} colSpan={2} />
-              <Table.Body
-                columns={columns}
-                data={employees}
-              />
-            </Table>
-            <Button onClick={openModal}>Criar usuário</Button>
-          </>
-        ) : (
-          <EmptySection
-            message='Nenhum usuário cadastrado. Crie um usuário para começar.'
-            onClick={openModal}
-            buttonText='Criar usuário'
-          />
-        )}
-      </Section>
-      <Modal isOpen={isModalOpen} onClose={closeModal} title='Criar usuário'>
-        <CreateEmployeeForm closeForm={closeModal} />
-      </Modal>
-    </>
+        <Section title='Lista de Usuários'>
+          {isLoadingEmployees ? (
+            <div className={styles.skeletonContainer}>
+              <Skeleton width='100%' height='100px' borderRadius='4px' />
+              <Skeleton width='100%' height='100px' borderRadius='4px' />
+              <Skeleton width='100%' height='100px' borderRadius='4px' />
+              <Skeleton width='100%' height='100px' borderRadius='4px' />
+            </div>
+          ) : employees.length > 0 ? (
+            <>
+              <Table>
+                <Table.Header columns={columns} colSpan={2} />
+                <Table.Body columns={columns} data={employees} />
+              </Table>
+              <Button onClick={openModal}>Criar usuário</Button>
+            </>
+          ) : (
+            <EmptySection
+              message='Nenhum usuário cadastrado. Crie um usuário para começar.'
+              onClick={openModal}
+              buttonText='Criar usuário'
+            />
+          )}
+        </Section>
+        <Modal isOpen={isModalOpen} onClose={closeModal} title='Criar usuário'>
+          <CreateEmployeeForm closeForm={closeModal} />
+        </Modal>
+      </>
     </>
   );
 }

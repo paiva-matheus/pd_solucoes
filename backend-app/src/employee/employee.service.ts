@@ -36,4 +36,8 @@ export class EmployeeService {
 
     return employee;
   }
+
+  async findAll(): Promise<Employee[]> {
+    return await this.employeeRepository.find();
+  }
 }

@@ -18,7 +18,7 @@ export const useCreatEmployee = () => {
       return await axiosClient.post(postEmployeePath, createEmployeeFormData);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['employeesSpentHours'] });
+      queryClient.invalidateQueries({ queryKey: ['employees'] });
     },
   });
 

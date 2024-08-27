@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Header } from '@/common/components/Header';
 
 const queryClient = new QueryClient();
-const roboto = Roboto({ subsets: ['latin'], weight: '400' });
+const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] });
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

@@ -1,6 +1,6 @@
 .section {
-    max-width: 71.563rem;
-    margin: 3.75rem auto;
+  max-width: 71.563rem;
+  margin: 3.75rem auto;
 }
 
 .content {
@@ -14,8 +14,8 @@
   gap: 1rem;
 }
 
-.content button{
-    margin-bottom: 3rem;
+.content button {
+  margin-bottom: 3rem;
 }
 
 .title {

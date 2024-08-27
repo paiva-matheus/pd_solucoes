@@ -1,0 +1,11 @@
+.squadForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+
+.buttonContainer {
+  margin: 1rem auto 0;
+}

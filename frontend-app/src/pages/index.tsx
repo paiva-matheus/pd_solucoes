@@ -3,7 +3,7 @@ import { Skeleton } from '@/common/components/Skeleton';
 import { Table } from '@/common/components/Table';
 import { useFetchSquads } from '@/squad/hooks/useFetchSquads';
 import Head from 'next/head';
-import styles from '@/styles/home.styles.module.css';
+import styles from '@/styles/skeleton.styles.module.css';
 import { useState } from 'react';
 import { Modal } from '@/common/components/Modal';
 import { CreateSquadForm } from '@/components/forms/create-squad-form';

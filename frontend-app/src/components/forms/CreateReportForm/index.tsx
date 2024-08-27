@@ -4,18 +4,18 @@ import { z } from 'zod';
 import styles from './styles.module.css';
 import { Input } from '@/common/components/Input';
 import { Button } from '@/common/components/Button';
-import { useCreatEmployee } from '@/employee/hooks/useCreateEmployee';
+import { useCreatReport } from '@/reports/hooks/useCreateReport';
 
 const schema = z.object({
-  name: z.string({ required_error: 'O nome é obrigatório.' }).min(1),
-  estimatedHours: z
+  description: z.string({ required_error: 'Campo obrigatório.' }).min(1),
+  spentHours: z
     .number({
-      required_error: 'As horas estimadas de trabalho são obrigatório.',
+      required_error: 'Campo obrigatório.',
     })
     .int()
     .min(1)
     .max(12),
-  squadId: z.number({ required_error: 'O id é obrigatório.' }).int(),
+  employeeId: z.number({ required_error: 'Campo obrigatório.' }).int(),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -24,8 +24,8 @@ interface CreateEmployeeFormProps {
   closeForm: () => void;
 }
 
-export const CreateEmployeeForm = ({ closeForm }: CreateEmployeeFormProps) => {
-  const { submitNewEmployee } = useCreatEmployee();
+export const CreateReportForm = ({ closeForm }: CreateEmployeeFormProps) => {
+  const { submitNewReport } = useCreatReport();
   const {
     register,
     handleSubmit,
@@ -35,7 +35,7 @@ export const CreateEmployeeForm = ({ closeForm }: CreateEmployeeFormProps) => {
   });
 
   const onSubmit = async (data: FormData) => {
-    const response = await submitNewEmployee(data);
+    const response = await submitNewReport(data);
     if (response.status === 201) {
       closeForm();
     }
@@ -44,35 +44,36 @@ export const CreateEmployeeForm = ({ closeForm }: CreateEmployeeFormProps) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <Input
-        type='text'
-        placeholder='Digite o nome do usuário'
-        label='Nome do usuário'
-        name='name'
+        type='number'
+        placeholder='Digite o ID do funcionário'
+        label='ID do usuário'
+        name='employeeId'
         register={register}
-        error={errors.name}
+        error={errors.employeeId}
+        valueAsNumber
       />
 
       <Input
         type='number'
         placeholder='Digite a quantidade de horas'
-        label='Horas estimadas de trabalho'
-        name='estimatedHours'
+        label='Horas Gastas'
+        name='spentHours'
         register={register}
-        error={errors.estimatedHours}
+        error={errors.spentHours}
         valueAsNumber
       />
 
       <Input
-        type='number'
-        placeholder='Digite o Id da squad'
-        label='Squad'
-        name='squadId'
+        type='text'
+        placeholder='Exemplo de texto de descrição
+da tarefa executada.'
+        label='descrição'
+        name='description'
         register={register}
-        error={errors.squadId}
-        valueAsNumber
+        error={errors.description}
       />
       <div className={styles.buttonContainer}>
-        <Button type='submit'>Criar usuário</Button>
+        <Button type='submit'>Criar lançamento</Button>
       </div>
     </form>
   );

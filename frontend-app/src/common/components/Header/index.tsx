@@ -3,15 +3,20 @@ import styles from './styles.module.css';
 import { Button } from '@/common/components/Button';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { Modal } from '../Modal';
+import { CreateReportForm } from '@/components/forms/CreateReportForm';
 
 export const Header = () => {
   const { asPath } = useRouter();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const hasPathInPathname = (path: string) => {
     return asPath.includes(path);
   };
-
-  const onClick = () => {};
 
   return (
     <header className={styles.header}>
@@ -26,7 +31,7 @@ export const Header = () => {
         </div>
         <div className={styles.titleContainer}>
           <h1 className={styles.title}>PD Hours</h1>
-          <Button onClick={onClick}>Lançar Horas</Button>
+          <Button onClick={openModal}>Lançar Horas</Button>
         </div>
         <div>
           <nav>
@@ -51,6 +56,9 @@ export const Header = () => {
           </nav>
         </div>
       </div>
+      <Modal isOpen={isModalOpen} onClose={closeModal} title='Criar Usuário'>
+        <CreateReportForm closeForm={closeModal} />
+      </Modal>
     </header>
   );
 };

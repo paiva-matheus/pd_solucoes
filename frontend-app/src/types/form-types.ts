@@ -15,4 +15,7 @@ export type ValidFieldNames =
   | 'estimatedHours'
   | 'squadId'
   | 'initialDate'
-  | 'endDate';
+  | 'endDate'
+  | 'description'
+  | 'spentHours'
+  | 'employeeId';

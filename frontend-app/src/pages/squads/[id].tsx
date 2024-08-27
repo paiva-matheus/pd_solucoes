@@ -95,14 +95,13 @@ export default function SquadPage() {
             </>
           )}
 
-          {
-            isSuccessFetchReports && reports.length === 0 &&
-          <EmptySection
-          message='Nenhum usuário cadastrado nesta squad. Crie um usuário para começar.'
-          onClick={openModal}
-          buttonText='Criar usuário'
-          />
-        }
+          {isSuccessFetchReports && reports.length === 0 && (
+            <EmptySection
+              message='Nenhum usuário cadastrado nesta squad. Crie um usuário para começar.'
+              onClick={openModal}
+              buttonText='Criar usuário'
+            />
+          )}
         </Section>
       )}
 

@@ -39,10 +39,10 @@ export class SquadService {
     return await this.squadsRepository.save(data);
   }
 
-  async findById(squadId: number): Promise<Squad> {
+  async findById(id: number): Promise<Squad> {
     const squad = await this.squadsRepository.findOne({
       where: {
-        id: squadId,
+        id,
       },
     });
 
@@ -51,23 +51,6 @@ export class SquadService {
     }
 
     return squad;
-  }
-
-  async getSquadWithEmployeesSpentHours(
-    squadId: number,
-    initialDate: Date,
-    endDate: Date,
-  ) {
-    return await this.squadsRepository
-      .createQueryBuilder('squad')
-      .innerJoinAndSelect('squad.employees', 'employee')
-      .innerJoinAndSelect('employee.reports', 'report')
-      .where('squad.id = :squadId', { squadId })
-      .andWhere('report.createdAt BETWEEN :initialDate AND :endDate', {
-        initialDate,
-        endDate,
-      })
-      .getOne();
   }
 
   async getSquadTotalHoursPerformed(

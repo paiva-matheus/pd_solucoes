@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { CreateReportDto } from './dto/create-report.dto';
-import { InjectRepository } from '@nestjs/typeorm';
 import { Report } from './report.entity';
 import { Repository } from 'typeorm';
 import { EmployeeService } from 'src/employee/employee.service';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class ReportService {
@@ -22,5 +22,23 @@ export class ReportService {
     });
 
     return await this.reportRepository.save(data);
+  }
+
+  async getReports(squadId: number, initialDate: Date, endDate: Date) {
+    return await this.reportRepository
+      .createQueryBuilder('report')
+      .innerJoinAndSelect('report.employee', 'employee')
+      .where('employee.squadId = :squadId', { squadId })
+      .andWhere('report.createdAt BETWEEN :initialDate AND :endDate', {
+        initialDate,
+        endDate,
+      })
+      .select([
+        'employee.name',
+        'report.description',
+        'report.spentHours',
+        'report.createdAt',
+      ])
+      .getMany();
   }
 }

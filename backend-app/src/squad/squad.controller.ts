@@ -32,20 +32,6 @@ export class SquadController {
     return this.squadService.findById(squadId);
   }
 
-  @Get('/:squadId/employees-spent-hours')
-  getSpentHours(
-    @Param('squadId') squadId: number,
-    @Query() query: DateQueryDto,
-  ) {
-    const { initialDate, endDate } = query;
-
-    return this.squadService.getSquadWithEmployeesSpentHours(
-      squadId,
-      new Date(initialDate),
-      new Date(endDate),
-    );
-  }
-
   @Get('/:squadId/total-hours-performed')
   getTotalHoursPerformed(
     @Param('squadId') squadId: number,

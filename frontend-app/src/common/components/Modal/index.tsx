@@ -4,8 +4,8 @@ import styles from './styles.module.css';
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  title?: string;
-  children?: React.ReactNode;
+  title: string;
+  children: React.ReactNode;
 }
 
 export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
@@ -14,14 +14,13 @@ export const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.content} onClick={(e) => e.stopPropagation()}>
-        {title && (
-          <div className={styles.header}>
-            <h2 className={styles.title}>{title}</h2>
-            <button className={styles.closeButton} onClick={onClose}>
-              ×
-            </button>
-          </div>
-        )}
+        <div className={styles.header}>
+          <h2 className={styles.title}>{title}</h2>
+          <button className={styles.closeButton} onClick={onClose}>
+            ×
+          </button>
+        </div>
+
         <div className={styles.body}>{children}</div>
       </div>
     </div>

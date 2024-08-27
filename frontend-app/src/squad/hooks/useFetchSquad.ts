@@ -4,7 +4,7 @@ import { axiosClient } from '@/common/services/axios-client';
 
 export const useFetchSquad = (squadId: string) => {
   const fetchSquadPath = `/squads/${squadId}`;
-  const { data, isFetching, isError } = useQuery({
+  const { data, isFetching, isError, isSuccess } = useQuery({
     queryKey: ['squad'],
     queryFn: () =>
       axiosClient
@@ -17,5 +17,6 @@ export const useFetchSquad = (squadId: string) => {
     squad: data,
     isLoadingSquad: isFetching,
     isErrorLoadingSquad: isError,
+    isSuccessFetchSquad: isSuccess,
   };
 };

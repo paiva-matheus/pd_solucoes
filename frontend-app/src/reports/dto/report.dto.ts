@@ -21,7 +21,7 @@ export class ReportDto {
   }
 
   get createdAt() {
-    const date = new Date(this.remoteReport.createdAt)
+    const date = new Date(this.remoteReport.createdAt);
     const createdAtFormatted = dateFormatter(date);
     return createdAtFormatted;
   }

@@ -21,9 +21,9 @@ export const useFetchTotalHoursPerformed = (
 
   return {
     fetchTotalHoursPerformed: refetch,
-    isLoadingSquad: isFetching,
-    isErrorLoadingSquad: isError,
-    isSuccess: isSuccess,
+    isLoadingTotalHoursPerformed: isFetching,
+    isErrorLoadingTotalHoursPerformed: isError,
+    isSuccessTotalHoursPerformed: isSuccess,
     totalHoursPerformed,
   };
 };

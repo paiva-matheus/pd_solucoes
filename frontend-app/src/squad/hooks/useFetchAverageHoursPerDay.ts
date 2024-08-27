@@ -23,8 +23,8 @@ export const useFetchAverageHoursPerDay = (
   return {
     fetchAverageHoursPerDay: refetch,
     averageHoursPerDay: averageHoursPerDay,
-    isLoadingSquad: isFetching,
-    isErrorLoadingSquad: isError,
-    isSuccess: isSuccess,
+    isLoadingAverageHoursPerDay: isFetching,
+    isErrorLoadingAverageHoursPerDay: isError,
+    isSuccessAverageHoursPerDay: isSuccess,
   };
 };

@@ -25,8 +25,8 @@ export const useFetchReports = (
   return {
     fetchReports: refetch,
     reports: data,
-    isLoadingSquad: isFetching,
-    isErrorLoadingSquad: isError,
-    isSuccess: isSuccess,
+    isLoadingReports: isFetching,
+    isErrorLoadingReports: isError,
+    isSuccessFetchReports: isSuccess,
   };
 };

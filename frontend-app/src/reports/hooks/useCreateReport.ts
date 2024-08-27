@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { axiosClient } from '@/common/services/axios-client';
+import { toast } from 'react-toastify';
 
 type CreateReportFormData = {
   description: string;
@@ -18,8 +19,10 @@ export const useCreatReport = () => {
       return await axiosClient.post(postReportPath, createReportFormData);
     },
     onSuccess: () => {
+      toast.success(`Sucesso ao criar o report`);
       queryClient.invalidateQueries({ queryKey: ['reports'] });
     },
+    onError: () => toast.error('Erro ao criar o report. Tente novamente.'),
   });
 
   const submitNewReport = async (

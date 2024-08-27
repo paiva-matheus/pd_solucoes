@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import { Roboto } from 'next/font/google';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Header } from '@/common/components/Header';
+import { ToastContainer } from 'react-toastify';
 
 const queryClient = new QueryClient();
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] });
@@ -13,6 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Header />
       <main className={roboto.className}>
         <Component {...pageProps} />;
+        <ToastContainer />
       </main>
     </QueryClientProvider>
   );

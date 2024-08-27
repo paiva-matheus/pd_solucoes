@@ -6,7 +6,7 @@ import Head from 'next/head';
 import styles from '@/styles/skeleton.styles.module.css';
 import { useState } from 'react';
 import { Modal } from '@/common/components/Modal';
-import { CreateSquadForm } from '@/components/forms/create-squad-form';
+import { CreateSquadForm } from '@/components/forms/CreateSquadForm';
 import { Section } from '@/common/components/Section';
 import { Button } from '@/common/components/Button';
 

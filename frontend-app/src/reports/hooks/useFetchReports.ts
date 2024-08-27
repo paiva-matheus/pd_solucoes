@@ -11,13 +11,19 @@ export const useFetchReports = (
   const { data, isFetching, isError, refetch, isSuccess } = useQuery({
     queryKey: ['reports'],
     queryFn: () =>
-      axiosClient.get(fetchSquadPath).then((response) => response.data.map((report: RemoteReport) => new ReportDto(report).toJSON())),
+      axiosClient
+        .get(fetchSquadPath)
+        .then((response) =>
+          response.data.map((report: RemoteReport) =>
+            new ReportDto(report).toJSON()
+          )
+        ),
     refetchOnWindowFocus: false,
     enabled: false,
   });
 
   return {
-    fetch: refetch,
+    fetchReports: refetch,
     reports: data,
     isLoadingSquad: isFetching,
     isErrorLoadingSquad: isError,

@@ -1,3 +1,5 @@
+import { dateFormatter } from '@/utils/formatter';
+
 export type RemoteReport = {
   description: string;
   spentHours: number;
@@ -19,7 +21,9 @@ export class ReportDto {
   }
 
   get createdAt() {
-    return new Date(this.remoteReport.createdAt).toDateString;
+    const date = new Date(this.remoteReport.createdAt)
+    const createdAtFormatted = dateFormatter(date);
+    return createdAtFormatted;
   }
 
   get name() {

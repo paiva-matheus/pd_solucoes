@@ -6,4 +6,9 @@
   padding: 0.875rem 1.875rem;
   border-radius: 0.5rem;
   width: 11.375rem;
+  transition: filter 0.2s;
+}
+
+.container:hover {
+  filter: brightness(0.9);
 }

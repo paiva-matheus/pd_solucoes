@@ -21,7 +21,7 @@ export const TableBody = ({ columns, data, callToAction }: TableBodyProps) => {
             const isLastIndex = index === columns.length - 1;
             return (
               <>
-                <td key={column.key} className={styles.cell}>
+                <td key={`b${column.key}`} className={styles.cell}>
                   {row[column.key]}
                 </td>
                 <td>

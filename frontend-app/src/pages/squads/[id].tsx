@@ -75,7 +75,7 @@ export default function SquadPage() {
         <Section title={squad!.name}>
           <DateFilterForm onFilter={onFilter} />
 
-          {isSuccessFetchReports && (
+          {isSuccessFetchReports && reports.lenght > 0 && (
             <>
               <h3 className={styles.h3}>Horas por membro</h3>
               <Table>
@@ -105,7 +105,7 @@ export default function SquadPage() {
         </Section>
       )}
 
-      <Modal isOpen={isModalOpen} onClose={closeModal} title='Criar Squad'>
+      <Modal isOpen={isModalOpen} onClose={closeModal} title='Criar usuário'>
         <CreateEmployeeForm closeForm={closeModal} />
       </Modal>
     </>

@@ -75,7 +75,7 @@ export default function SquadPage() {
         <Section title={squad!.name}>
           <DateFilterForm onFilter={onFilter} />
 
-          {isSuccessFetchReports && reports.lenght > 0 && (
+          {isSuccessFetchReports && reports.lenght !== 0 && (
             <>
               <h3 className={styles.h3}>Horas por membro</h3>
               <Table>
